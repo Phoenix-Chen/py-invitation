@@ -26,7 +26,6 @@ class Invitation:
 
         """
         self.smtp_conn = SMTP(host, port=port)
-        #self.smtp_conn.set_debuglevel(False)
         if use_tls:
             self.smtp_conn.starttls()
         self.smtp_conn.login(host_user, host_password)
