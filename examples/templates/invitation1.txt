@@ -1,0 +1,7 @@
+Dear {{receiver_name}}:
+
+Hi, I'm organizing the our next club meeting. Please RSVP using the link below:
+{{callback_url}}
+
+Thank you,
+{{sender_name}}

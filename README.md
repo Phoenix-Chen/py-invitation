@@ -1,6 +1,6 @@
 # py-invitation
 ***
-A simple Python library for sending email invitation with HTML or plain text. 
+A simple Python library for sending email invitation with HTML or plain text.
 
 ## Install
 ***
@@ -118,24 +118,26 @@ Template contains all the email info.
 
 ### load_template_from_str
 ```python
-Template.load_template_from_str(self, template_str, variables)
+Template.load_template_from_str(self, template_str, variables, is_html=False)
 ```
 Load email body from string.
 
 #### Args:
 - template_str (`str`) : HTML string or plain text as email body.
 - variables (`dict(str)`) : A dictionary containing all the variables to be replaced in template.
+- is_html (`boolean`, optional) : Whether the string is HTML. Defaults to False.
 
 
 ### load_template_from_file
 ```python
-Template.load_template_from_file(self, template_path, variables)
+Template.load_template_from_file(self, template_path, variables, is_html=False)
 ```
 Load email body from a file.
 
 #### Args:
 - template_path (`str`) : Path to the html or text message as email body.
 - variables (`dict(str)`) : A dictionary containing all the variables to be replaced in template.
+- is_html (`boolean`, optional) : Whether the file is HTML. Defaults to False.
 
 
 ### add_attachment

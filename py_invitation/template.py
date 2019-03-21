@@ -22,32 +22,37 @@ class Template:
         self.msg['To'] = receiver
 
 
-    def load_template_from_str(self, template_str, variables):
+    def load_template_from_str(self, template_str, variables, is_html=False):
         """Load email body from string.
 
             Args:
                 template_str (str) : HTML string or plain text as email body.
                 variables (dict(str)) : A dictionary containing all the variables to be replaced in template.
+                is_html (boolean, optional) : Whether the string is HTML. Defaults to False.
 
         """
         # FIXME: Redo the variable replacement to handle {{{{key_1}}}} where {{key_1}} = key_2
         for key, value in variables.items():
             pattern = '{{' + key + '}}'
             template_str = template_str.replace(pattern, value)
-        self.msg.attach(MIMEText(template_str, 'html'))
+        if is_html:
+            self.msg.attach(MIMEText(template_str, 'html'))
+        else:
+            self.msg.attach(MIMEText(template_str, 'plain'))
 
 
-    def load_template_from_file(self, template_path, variables):
+    def load_template_from_file(self, template_path, variables, is_html=False):
         """Load email body from a file.
 
             Args:
                 template_path (str) : Path to the html or text message as email body.
                 variables (dict(str)) : A dictionary containing all the variables to be replaced in template.
+                is_html (boolean, optional) : Whether the file is HTML. Defaults to False.
 
         """
         try:
             f = open(template_path, "r")
-            self.load_template_from_str(f.read(), variables)
+            self.load_template_from_str(f.read(), variables, is_html=is_html)
             f.close()
         except Exception as e:
             print(e)
